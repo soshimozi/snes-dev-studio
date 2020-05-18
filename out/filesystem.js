@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.WorkspaceFolder = exports.WriteFileAsync = exports.ReadFileAsync = exports.ChModAsync = exports.MkDirAsync = exports.FolderExistsAsync = exports.RemoveFileAsync = exports.GetFileStatsAsync = exports.FileExistsAsync = exports.IsRunFromExplorer = exports.GetDocumentAsync = exports.GetFileUriAsync = void 0;
+exports.WorkspaceFolder = exports.WriteFileAsync = exports.ReadFileAsync = exports.ChModAsync = exports.MkDirAsync = exports.FolderExistsAsync = exports.RemoveFileAsync = exports.GetFileStatsAsync = exports.RenameFileAsync = exports.FileExistsAsync = exports.IsRunFromExplorer = exports.GetDocumentAsync = exports.GetFileUriAsync = void 0;
 const vscode = require("vscode");
 const application = require("./application");
 const fs = require("fs");
@@ -79,6 +79,15 @@ function FileExistsAsync(path) {
     });
 }
 exports.FileExistsAsync = FileExistsAsync;
+function RenameFileAsync(oldName, newName) {
+    console.log('debugger:filesystem.RenameFileAsync');
+    return new Promise((resolve, reject) => {
+        fs.rename(oldName, newName, err => {
+            resolve(!err);
+        });
+    });
+}
+exports.RenameFileAsync = RenameFileAsync;
 function GetFileStatsAsync(path) {
     console.log('debugger.filesystem.GetFileStatsAsync');
     return new Promise((resolve, reject) => {

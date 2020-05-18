@@ -64,6 +64,16 @@ export function FileExistsAsync(path: string): Promise<boolean> {
     });
 }
 
+export function RenameFileAsync(oldName: string, newName: string): Promise<boolean> {
+    console.log('debugger:filesystem.RenameFileAsync');
+
+    return new Promise((resolve, reject) => {
+        fs.rename(oldName, newName, err => {
+            resolve(!err);
+        });
+    });
+}
+
 export function GetFileStatsAsync(path: string) : Promise<fs.Stats> {
     console.log('debugger.filesystem.GetFileStatsAsync');
 
